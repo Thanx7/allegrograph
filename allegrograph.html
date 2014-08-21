@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SPARQL JavaScript / Allegrograph</title>
+<script>
+function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
+  var querypart = "query=" + escape(queryStr);
+
+  // Get our HTTP request object.
+  var xmlhttp = null;
+  if(window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+ } else if(window.ActiveXObject) {
+   // Code for older versions of IE, like IE6 and before.
+   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+ } else {
+   console.dir('Perhaps your browser does not support XMLHttpRequests?');
+ }
+ console.dir (endpoint);
+ // Set up a POST with JSON result format.
+ xmlhttp.open('POST', endpoint, true); // GET can have caching probs, so POST
+ console.dir ('opened');
+ xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+ console.dir('set Content');
+
+ xmlhttp.setRequestHeader("Accept", "application/json");
+ console.dir ('set accept');
+ console.dir (xmlhttp);
+
+ // Set up callback to get the response asynchronously.
+ xmlhttp.onreadystatechange = function() {
+<!--console.dir('enter onreadystatechange');-->
+<!--console.dir (xmlhttp.readyState);-->
+   if(xmlhttp.readyState == 4) {
+     if(xmlhttp.status == 200) {
+       // Do something with the results
+       if(isDebug) console.dir(xmlhttp.responseText);
+       callback(xmlhttp.responseText);
+     } else {
+       // Some kind of error occurred.
+       console.dir("Sparql query error: " + xmlhttp.status + " "
+           + xmlhttp.responseText);
+     }
+   }
+ };
+ // Send the query to the endpoint
+console.dir(querypart);
+ xmlhttp.send(querypart);
+
+ // Done; now just wait for the callback to be called.
+};
+</script>
+</head>
+
+<body>
+    <script>
+
+    var endpoint = "http://epbyminw2052t1:10035/repositories/smallPig";
+    var query = "select * {?s ?p ?o} limit 5";
+
+// Define a callback function to receive the SPARQL JSON result.
+  function myCallback(str) {
+    // Convert result to JSON
+	console.dir("callback" + str);
+    var jsonObj = eval('(' + str + ')');
+	console.dir(jsonObj);
+
+    // Build up a table of results.
+    var result = " <table border='2' cellpadding='9'>" ;
+    for (var key in jsonObj) {
+      if (jsonObj.hasOwnProperty(key)) {
+        console.dir(key + " -> " + jsonObj[key]);
+      }
+    }
+
+    /*for(var i = 0; i<  4; i++) {
+      result += " <tr> <td>" + jsonObj[i].s.value;
+      console.dir(jsonObj[i].s.value);
+      result += " </td><td>" + jsonObj[i].p.value;
+      result += " </td><td>" + jsonObj[i].o.value;
+      result += " </td></tr>";
+    }
+    result += "</table>" ;
+    document.getElementById("results").innerHTML = result;*/
+ }
+
+ // Make the query.
+ sparqlQueryJson(query, endpoint, myCallback, true);
+
+</script>
+
+	<div id="results">
+	  It may take a few moments for the info to be displayed here...
+	</div>
+
+  </body>
+
+</html>

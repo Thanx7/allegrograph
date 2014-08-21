@@ -1,1 +1,4 @@
 http://www.w3.org/TR/rdfa-lite/
+
+http://www.w3.org/TR/owl-ref/#appA
+http://www.w3.org/TR/owl-guide/
