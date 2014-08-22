@@ -19,7 +19,7 @@ p:MapPrinting skos:prefLabel "Map printing"@en .
 p:MapPrinting <http://www.w3.org/2008/05/skos-xl#altLabel> _:node1 . 
 _:node1 rdf:type <http://www.w3.org/2008/05/skos-xl#Label> . 
 _:node1 <http://www.w3.org/2008/05/skos-xl#literalForm> "Maps, Printing of"@en . 
-p:MapPrinting <skos:broader> <p:Cortography> . 
+p:MapPrinting <skos:broader> <p:Cartography> . 
 p:MapPrinting <skos:broader> <p:Maps-Reproduction> . 
 p:MapPrinting <skos:broader> <p:Printing> . 
 p:MapPrinting <skos:closeMatch> <http://d-nb.info/gnd/4127430-1> .
