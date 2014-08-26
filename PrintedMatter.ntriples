@@ -70,8 +70,11 @@ _:node3 <purl:changeReason> "revised"^^<http://www.w3.org/2001/XMLSchema#string>
 <#isbn>	rdfs:domain	<#Book> .
 <#mediaType> rdfs:domain <#Book> .
 <#numberOfPages> rdfs:domain <#Book> .
-<#Novel> rdfs:subClassOf <#Book> .
 <#Book>	rdfs:label "book"@en .
+<#Novel> a _:node10 .
+_:node10 rdfs:subClassOf <#Book> .
+_:node10 rdfs:label "Novel"@en .
+_:node10 ex:quantity, "28" .
 
 <#PeriodicalLiterature>	rdf:type <owl:Class> .
 <#PeriodicalLiterature>	rdfs:subClassOf	<#WrittenWork> .
