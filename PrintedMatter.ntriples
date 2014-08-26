@@ -7,53 +7,61 @@
 @prefix purl: <http://purl.org/vocab/changeset/schema#> .
 @prefix p: <http://id.loc.gov/authorities/subjects> .
 @prefix n: <http://id.loc.gov/authorities/names> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:PrintedMatter rdf:type <owl:Class> .
 ex:PrintedMatter rdfs:comment "Main Class - Bookstore."@en .
 ex:PrintedMatter rdfs:domain n:Bookstore .
 
-p:MapPrinting rdf:type <owl:Class> .
-p:MapPrinting rdfs:subClassOf <#PrintedMatter> .
-p:MapPrinting rdf:type <skos:Concept> . 
-p:MapPrinting skos:prefLabel "Map printing"@en . 
-p:MapPrinting <http://www.w3.org/2008/05/skos-xl#altLabel> _:node1 . 
+p:Maps rdf:type <owl:Class> .
+p:Maps rdfs:subClassOf <#PrintedMatter> .
+p:Maps rdfs:label "Maps"@en .
+p:Maps rdf:type <skos:Concept> . 
+p:Maps skos:prefLabel "Map printing"@en . 
+p:Maps <http://www.w3.org/2008/05/skos-xl#altLabel> _:node1 . 
 _:node1 rdf:type <http://www.w3.org/2008/05/skos-xl#Label> . 
 _:node1 <http://www.w3.org/2008/05/skos-xl#literalForm> "Maps, Printing of"@en . 
-p:MapPrinting <skos:broader> <p:Cartography> . 
-p:MapPrinting <skos:broader> <p:Maps-Reproduction> . 
-p:MapPrinting <skos:broader> <p:Printing> . 
-p:MapPrinting <skos:closeMatch> <http://d-nb.info/gnd/4127430-1> .
+p:Maps
+	ex:quantity "102"^^xs:integer;
+	ex:price "65"^^xs:integer .
+p:Maps <skos:broader> <p:Cartography> . 
+p:Maps <skos:broader> <p:Maps-Reproduction> . 
+p:Maps <skos:broader> <p:Printing> . 
+p:Maps <skos:closeMatch> <http://d-nb.info/gnd/4127430-1> .
 <http://d-nb.info/gnd/4127430-1> rdf:type <skos:Concept> . 
 <http://d-nb.info/gnd/4127430-1> <skos:prefLabel> "Kartenherstellung"@DE . 
 <http://d-nb.info/gnd/4127430-1> rdfs:Label "http://d-nb.info/gnd/4127430-1" .
-p:MapPrinting skos:inScheme <http://id.loc.gov/authorities/subjects> . 
-p:MapPrinting skos:altLabel "Maps, Printing of"@en . 
-p:MapPrinting skos:changeNote _:node2 . 
+p:Maps skos:inScheme <http://id.loc.gov/authorities/subjects> . 
+p:Maps skos:altLabel "Maps, Printing of"@en . 
+p:Maps skos:changeNote _:node2 . 
 _:node2 rdf:type <purl:ChangeSet> . 
-_:node2 <purl:subjectOfChange> p:MapPrinting . 
+_:node2 <purl:subjectOfChange> p:Maps . 
 _:node2 <purl:creatorName> <http://id.loc.gov/vocabulary/organizations/dlc> .
 _:node2 <purl:createdDate> "1986-02-11T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> . 
 _:node2 <purl:changeReason> "new"^^<http://www.w3.org/2001/XMLSchema#string> .
 
-p:PostageStampPrinting rdf:type <owl:Class> .
-p:PostageStampPrinting rdfs:subClassOf <#PrintedMatter> .
-p:PostageStampPrinting <rdf:type> <skos:Concept> . 
-p:PostageStampPrinting <skos:prefLabel> "Postage-stamp printing"@en . 
-p:PostageStampPrinting <skos:broader> <p:Engraving--Printing> . 
-p:PostageStampPrinting <skos:closeMatch> <http://data.bnf.fr/ark:/12148/cb11933611h> . 
+p:PostageStamps rdf:type <owl:Class> .
+p:PostageStamps rdfs:subClassOf <#PrintedMatter> .
+p:PostageStamps rdfs:label "Maps"@en .
+p:PostageStamps ex:quantity "10254"^^xs:integer .
+p:PostageStamps ex:price "10.5"^^xs:float .
+p:PostageStamps <rdf:type> <skos:Concept> . 
+p:PostageStamps <skos:prefLabel> "Postage-stamp printing"@en . 
+p:PostageStamps <skos:broader> <p:Engraving--Printing> . 
+p:PostageStamps <skos:closeMatch> <http://data.bnf.fr/ark:/12148/cb11933611h> . 
 <http://data.bnf.fr/ark:/12148/cb11933611h> <rdf:type> <skos:Concept> . 
 <http://data.bnf.fr/ark:/12148/cb11933611h> <skos:prefLabel> "Timbres-poste -- Impression"@FR . 
 <http://data.bnf.fr/ark:/12148/cb11933611h> rdfs:Label "http://data.bnf.fr/ark:/12148/cb11933611h" .
-p:PostageStampPrinting <skos:inScheme> <http://id.loc.gov/authorities/subjects> . 
-p:PostageStampPrinting <skos:changeNote> _:node4 . 
+p:PostageStamps <skos:inScheme> <http://id.loc.gov/authorities/subjects> . 
+p:PostageStamps <skos:changeNote> _:node4 . 
 _:node4 <rdf:type> <purl:ChangeSet> . 
-_:node4 <purl:subjectOfChange> p:PostageStampPrinting . 
+_:node4 <purl:subjectOfChange> p:PostageStamps . 
 _:node4 <purl:creatorName> <http://id.loc.gov/vocabulary/organizations/dlc> . 
 _:node4 <purl:createdDate> "1986-02-11T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> . 
 _:node4 <purl:changeReason> "new"^^<http://www.w3.org/2001/XMLSchema#string> . 
-p:PostageStampPrinting <skos:changeNote> _:node3 . 
+p:PostageStamps <skos:changeNote> _:node3 . 
 _:node3 <rdf:type> <purl:ChangeSet> . 
-_:node3 <purl:subjectOfChange> p:PostageStampPrinting . 
+_:node3 <purl:subjectOfChange> p:PostageStamps . 
 _:node3 <purl:creatorName> <http://id.loc.gov/vocabulary/organizations/dlc> . 
 _:node3 <purl:createdDate> "1997-09-12T16:09:05"^^<http://www.w3.org/2001/XMLSchema#dateTime> . 
 _:node3 <purl:changeReason> "revised"^^<http://www.w3.org/2001/XMLSchema#string> . 
@@ -71,16 +79,21 @@ _:node3 <purl:changeReason> "revised"^^<http://www.w3.org/2001/XMLSchema#string>
 <#mediaType> rdfs:domain <#Book> .
 <#numberOfPages> rdfs:domain <#Book> .
 <#Book>	rdfs:label "book"@en .
-<#Novel> a _:node10 .
-_:node10 rdfs:subClassOf <#Book> .
-_:node10 rdfs:label "Novel"@en .
-_:node10 ex:quantity, "28" .
+<#Novel> rdfs:subClassOf <#Book> .
+<#Novel> rdfs:label "Novel"@en .
+<#Novel> ex:quantity "28"^^xs:integer .
 
 <#PeriodicalLiterature>	rdf:type <owl:Class> .
 <#PeriodicalLiterature>	rdfs:subClassOf	<#WrittenWork> .
 <#Magazine>	rdfs:subClassOf <#PeriodicalLiterature> .
+<#Magazine> rdfs:label "Magazine"@en .
+<#Magazine> ex:quantity "14"^^xs:integer .
 <#AcademicJournal>	rdfs:subClassOf	<#PeriodicalLiterature> .
+<#AcademicJournal> rdfs:label "AcademicJournal"@en .
+<#AcademicJournal> ex:quantity "15"^^xs:integer .
 <#Newspaper> rdfs:subClassOf <#PeriodicalLiterature> .
+<#Newspaper> rdfs:label "Newspaper"@en .
+<#Newspaper> ex:quantity "256"^^xs:integer .
 <#issn>	rdfs:domain	<#PeriodicalLiterature> .
 <#firstPublicationYear>	rdfs:domain	<#PeriodicalLiterature> .
 <#frequencyOfPublication> rdfs:domain <#PeriodicalLiterature> .
